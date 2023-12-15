@@ -45,6 +45,7 @@
     "dompurify": "^3.0.6",
     "elliptic": "^6.5.4",
     "ethers": "^5.7.2",
+    "fix-esm": "^1.0.1",
     "idb": "^7.1.1",
     "iframe-resizer-react": "^1.1.0",
     "local-storage": "^2.0.0",
