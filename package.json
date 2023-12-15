@@ -2,7 +2,7 @@
   "name": "near-social-vm",
   "version": "2.5.3",
   "description": "Near Social VM",
-  "main": "dist/index.js",
+  "main": "dist/index.cjs",
   "files": [
     "dist"
   ],
