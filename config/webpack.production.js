@@ -1,8 +1,8 @@
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
-const path = require("path");
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import CssMinimizerPlugin from "css-minimizer-webpack-plugin";
+import path from "path";
 
-module.exports = () => {
+export default () => {
   return {
     // output: {
     //   path: path.resolve(__dirname, "../dist"),

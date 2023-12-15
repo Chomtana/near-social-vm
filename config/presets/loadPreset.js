@@ -1,6 +1,6 @@
-const { merge } = require("webpack-merge");
+import { merge } from "webpack-merge";
 
-const loadPresets = (env = { presets: [] }) => {
+export default (env = { presets: [] }) => {
   const presets = env.presets || [];
   /** @type {string[]} */
   const mergedPresets = [].concat(...[presets]);
@@ -10,4 +10,4 @@ const loadPresets = (env = { presets: [] }) => {
 
   return merge({}, ...mergedConfigs);
 };
-module.exports = loadPresets;
+// module.exports = loadPresets;

@@ -1,13 +1,18 @@
-const webpack = require("webpack");
-const paths = require("./config/paths");
-const path = require("path");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const { merge } = require("webpack-merge");
-const loadPreset = require("./config/presets/loadPreset");
-const loadConfig = (mode) => require(`./config/webpack.${mode}.js`)(mode);
-const nodeExternals = require("webpack-node-externals");
+import webpack from "webpack";
+import paths from "./config/paths.js";
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { CleanWebpackPlugin } from "clean-webpack-plugin";
+import { merge } from "webpack-merge";
+import loadPreset from "./config/presets/loadPreset.js";
+import nodeExternals from "webpack-node-externals";
 
-module.exports = function (env) {
+import config from "./config/webpack.production.js"
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+export default function (env) {
   const { mode = "production" } = env || {};
   return merge(
     {
@@ -59,8 +64,8 @@ module.exports = function (env) {
         modules: [paths.srcPath, "node_modules"],
         extensions: [".js", ".jsx", ".json"],
         fallback: {
-          crypto: require.resolve("crypto-browserify"),
-          stream: require.resolve("stream-browserify"),
+          // crypto: import.meta.resolve("crypto-browserify"),
+          // stream: require.resolve("stream-browserify"),
         },
       },
       target: "node",
@@ -71,13 +76,13 @@ module.exports = function (env) {
         // }),
         new CleanWebpackPlugin(),
         new webpack.ProgressPlugin(),
-        new webpack.ProvidePlugin({
-          process: "process/browser",
-          Buffer: [require.resolve("buffer/"), "Buffer"],
-        }),
+        // new webpack.ProvidePlugin({
+        //   process: "process/browser",
+        //   Buffer: [require.resolve("buffer/"), "Buffer"],
+        // }),
       ],
     },
-    loadConfig(mode),
+    config,
     loadPreset(env)
   );
 };

@@ -1,7 +1,7 @@
-const path = require("path");
-const { HotModuleReplacementPlugin } = require("webpack");
+import path from "path";
+import { HotModuleReplacementPlugin } from "webpack";
 
-module.exports = () => ({
+export default () => ({
   devtool: false,
   module: {
     rules: [
